@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="01fd9975-1dbd-4940-ab93-99d41a382b4a" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_Generales_ObtenerCodigoEstadoCuenta" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="01fd9975-1dbd-4940-ab93-99d41a382b4afileName">TC_Generales_ObtenerCodigoEstadoCuenta</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="REST ObtenerCodigoEstadoCuenta" id="ae7cb003-12e4-40d0-b7af-f7fdbd949ce0">
+    <con:settings/>
+    <con:config service="Kapsch TrafficCom Chile - ASP.Net Web API (Rest) - Intervial" methodName="Generales_ObtenerCodigoEstadoCuenta" resourcePath="/api/Generales/ObtenerCodigoEstadoCuenta" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="REST ObtenerCodigoEstadoCuenta" id="fa53b4b7-5b47-4422-b03d-8144e4be15f5" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://148.198.229.21:8096</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://148.198.229.21/api/Generales/ObtenerCodigoEstadoCuenta</con:originalUri>
+        <con:assertion type="JsonPath Match" id="2d3ec0ce-a7d9-48e4-adaf-f3959b9d0246" name="Match content of [Codigo]">
+          <con:configuration>
+            <path>$['DescripcionServicio']['Codigo']</path>
+            <content>10020</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <entry key="IP" value="10.0.0.0" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testCase>

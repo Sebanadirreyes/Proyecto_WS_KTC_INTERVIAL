@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="fab40436-ebb2-4f8f-9123-5316099463e1" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_ValidarDatos_ActualizarDomicilio" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="fab40436-ebb2-4f8f-9123-5316099463e1fileName">TC_ValidarDatos_ActualizarDomicilio</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="REST IniciarSesion" id="662a0c17-61a3-48fe-a14d-5da05c5ce77b">
+    <con:settings/>
+    <con:config service="Kapsch TrafficCom Chile - ASP.Net Web API (Rest) - Intervial" methodName="ValidarDatos_IniciarSesion" resourcePath="/api/ValidarDatos/IniciarSesion" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="REST IniciarSesion" id="99fe058e-31a8-4e2e-a211-f1c4fe3a37ca" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://148.198.229.21:8096</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://148.198.229.21/api/ValidarDatos/IniciarSesion</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <con:entry key="Rut" value="130458777"/>
+          <con:entry key="Clave" value="A012345678"/>
+          <con:entry key="IP" value="10.0.0.0"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="PropertyTransfer 1" id="a101fb78-09f1-4e78-a63d-2732ae052b1f">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true">
+        <con:name>CodigoSesion</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>REST IniciarSesion</con:sourceStep>
+        <con:sourcePath>$['Objeto']['CodigoSesion']</con:sourcePath>
+        <con:targetType>CodigoSesion</con:targetType>
+        <con:targetStep>REST ObtenerDomicilio</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="REST ObtenerDomicilio" id="cdd1f847-11f0-44d3-82c2-55461dc5cc73">
+    <con:settings/>
+    <con:config service="Kapsch TrafficCom Chile - ASP.Net Web API (Rest) - Intervial" methodName="ValidarDatos_ObtenerDomicilio" resourcePath="/api/ValidarDatos/ObtenerDomicilio" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="REST ObtenerDomicilio" id="5449093b-6a8c-4cd7-8774-e8d447332ced" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://148.198.229.21:8096</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://148.198.229.21/api/ValidarDatos/ObtenerDomicilio</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <con:entry key="IP" value="10.0.0.0"/>
+          <con:entry key="CodigoSesion" value="27555371"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="PropertyTransfer 2" id="d63a3a8a-77ce-4298-8bc9-942890ad8c22">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true">
+        <con:name>CodigoPais</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>REST ObtenerDomicilio</con:sourceStep>
+        <con:sourcePath>$['Objeto']['CodigoPais']</con:sourcePath>
+        <con:targetType>CodigoPais</con:targetType>
+        <con:targetStep>REST ValidarDatos_ActualizarDomicilio</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true">
+        <con:name>CodigoRegion</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>REST ObtenerDomicilio</con:sourceStep>
+        <con:sourcePath>$['Objeto']['CodigoRegion']</con:sourcePath>
+        <con:targetType>CodigoRegion</con:targetType>
+        <con:targetStep>REST ValidarDatos_ActualizarDomicilio</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true">
+        <con:name>CodigoComuna</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>REST ObtenerDomicilio</con:sourceStep>
+        <con:sourcePath>$['Objeto']['CodigoComuna']</con:sourcePath>
+        <con:targetType>CodigoComuna</con:targetType>
+        <con:targetStep>REST ValidarDatos_ActualizarDomicilio</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true">
+        <con:name>CalleDesnormalizada</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>REST ObtenerDomicilio</con:sourceStep>
+        <con:sourcePath>$['Objeto']['CalleDesnormalizada']</con:sourcePath>
+        <con:targetType>CalleDesnormalizada</con:targetType>
+        <con:targetStep>REST ValidarDatos_ActualizarDomicilio</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="REST ValidarDatos_ActualizarDomicilio" id="77fa5d71-c833-41dd-ad89-5792722d631e">
+    <con:settings/>
+    <con:config service="Kapsch TrafficCom Chile - ASP.Net Web API (Rest) - Intervial" methodName="ValidarDatos_ActualizarDomicilio" resourcePath="/api/ValidarDatos/ActualizarDomicilio" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="REST ValidarDatos_ActualizarDomicilio" id="e74f713b-18fe-4cb2-9f38-8734e57c3aaf" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://148.198.229.21:8096</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://148.198.229.21/api/ValidarDatos/ActualizarDomicilio</con:originalUri>
+        <con:assertion type="JsonPath Match" id="897ffcae-094a-4783-95c1-36ed5af99771" name="Match content of [Codigo]">
+          <con:configuration>
+            <path>$['DescripcionServicio']['Codigo']</path>
+            <content>10020</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <con:entry key="CalleDesnormalizada" value="Avda Santa Amalia 1550-H . Condominio Alto De Santa Amalia"/>
+          <con:entry key="IP" value="10.0.0.0"/>
+          <con:entry key="CodigoPostal" value="2550728"/>
+          <con:entry key="CodigoPais" value="CHI"/>
+          <con:entry key="CodigoComuna" value="116"/>
+          <con:entry key="CodigoSesion" value="${REST ObtenerDomicilio#CodigoSesion}"/>
+          <con:entry key="CodigoCalle" value="1180"/>
+          <con:entry key="CodigoRegion" value="013"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>77fa5d71-c833-41dd-ad89-5792722d631e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>cdd1f847-11f0-44d3-82c2-55461dc5cc73</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>
