@@ -22,14 +22,14 @@
         <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
         <con:jmsPropertyConfig/>
         <con:parameters>
-          <con:entry key="Rut" value="130458777"/>
+          <con:entry key="Rut" value="12449429K"/>
           <con:entry key="Clave" value="A012345678"/>
           <con:entry key="IP" value="10.0.0.0"/>
         </con:parameters>
       </con:restRequest>
     </con:config>
   </con:testStep>
-  <con:testStep type="transfer" name="PropertyTransfer 1" id="f59d7f8a-4d80-4a39-9826-e6d5596b60b3">
+  <con:testStep type="transfer" name="PropertyTransfer Codigo Sesion 1" id="f59d7f8a-4d80-4a39-9826-e6d5596b60b3">
     <con:settings/>
     <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true">
@@ -73,7 +73,7 @@
         <con:jmsPropertyConfig/>
         <con:parameters>
           <con:entry key="IP" value="10.0.0.0"/>
-          <con:entry key="CodigoSesion" value="27555371"/>
+          <con:entry key="CodigoSesion" value="70331955"/>
         </con:parameters>
       </con:restRequest>
     </con:config>

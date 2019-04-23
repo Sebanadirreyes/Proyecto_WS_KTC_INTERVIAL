@@ -70,7 +70,7 @@
         <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
         <con:jmsPropertyConfig/>
         <con:parameters>
-          <con:entry key="Captcha" value="qmwk"/>
+          <con:entry key="Captcha" value="gcwr"/>
           <con:entry key="IP" value="10.0.0.0"/>
           <con:entry key="ImprimirCSV" value="false"/>
           <con:entry key="NumeroDocumento" value="130458777"/>

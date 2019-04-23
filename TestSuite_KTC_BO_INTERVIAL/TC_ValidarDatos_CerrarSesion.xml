@@ -73,7 +73,7 @@
         <con:jmsPropertyConfig/>
         <con:parameters>
           <con:entry key="IP" value="10.0.0.0"/>
-          <con:entry key="CodigoSesion" value="1780438"/>
+          <con:entry key="CodigoSesion" value="1780483"/>
         </con:parameters>
       </con:restRequest>
     </con:config>

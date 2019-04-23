@@ -70,7 +70,7 @@
         <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
         <con:jmsPropertyConfig/>
         <con:parameters>
-          <con:entry key="Captcha" value="ddhn"/>
+          <con:entry key="Captcha" value="gxgm"/>
           <con:entry key="IP" value="10.0.0.0"/>
           <con:entry key="Patente" value="KBVP43"/>
         </con:parameters>

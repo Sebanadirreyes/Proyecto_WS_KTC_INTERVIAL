@@ -64,7 +64,7 @@
         <con:jmsPropertyConfig/>
         <con:parameters>
           <con:entry key="IP" value="10.0.0.0"/>
-          <con:entry key="CodigoSesion" value="16657768"/>
+          <con:entry key="CodigoSesion" value="70331955"/>
           <con:entry key="ImprimirCSV" value="false"/>
         </con:parameters>
       </con:restRequest>
@@ -129,8 +129,8 @@
           <con:entry key="Confirmado" value="true"/>
           <con:entry key="NumeroDocumento" value="${REST IniciarSesion#Rut}"/>
           <con:entry key="CodigoTipoCuentaBancaria" value="1"/>
-          <con:entry key="CodigoConvenio" value="2959296"/>
           <con:entry key="Sucursal" value="1"/>
+          <con:entry key="CodigoConvenio" value="2959296"/>
           <con:entry key="Telefono" value="2222222"/>
           <con:entry key="Personeria" value="1"/>
           <con:entry key="Apellido" value="Modificado por automatizacion"/>

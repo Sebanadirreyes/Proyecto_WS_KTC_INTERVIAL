@@ -77,7 +77,7 @@
         <con:parameters>
           <con:entry key="CodigoTipoConvenio" value="1"/>
           <con:entry key="IP" value="10.0.0.0"/>
-          <con:entry key="CodigoSesion" value="1780438"/>
+          <con:entry key="CodigoSesion" value="1780483"/>
           <con:entry key="ImprimirCSV" value="false"/>
         </con:parameters>
       </con:restRequest>

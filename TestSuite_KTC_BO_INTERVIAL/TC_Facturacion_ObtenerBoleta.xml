@@ -77,7 +77,7 @@
           <con:entry key="IP" value="10.0.0.0"/>
           <con:entry key="TipoBoleta" value="NK"/>
           <con:entry key="NumeroBoleta" value="94290"/>
-          <con:entry key="CodigoSesion" value="27555371"/>
+          <con:entry key="CodigoSesion" value="63634805"/>
         </con:parameters>
       </con:restRequest>
     </con:config>

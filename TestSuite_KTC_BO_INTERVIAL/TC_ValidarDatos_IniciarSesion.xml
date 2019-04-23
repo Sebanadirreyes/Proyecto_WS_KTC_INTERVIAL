@@ -8,16 +8,28 @@
     <con:settings/>
     <con:config service="Kapsch TrafficCom Chile - ASP.Net Web API (Rest) - Intervial" methodName="ValidarDatos_IniciarSesion" resourcePath="/api/ValidarDatos/IniciarSesion" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <con:restRequest name="REST IniciarSesion" id="35fc5f04-7a5f-4239-adaa-10626d95d1fa" mediaType="application/json" postQueryString="false">
-        <con:settings/>
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
         <con:encoding>UTF-8</con:encoding>
         <con:endpoint>http://148.198.229.21:8096</con:endpoint>
         <con:request/>
         <con:originalUri>http://148.198.229.21/api/ValidarDatos/IniciarSesion</con:originalUri>
+        <con:assertion type="JsonPath Match" id="85432220-d02d-4f7c-b539-dff20fbe24c4" name="Match content of [Codigo]">
+          <con:configuration>
+            <path>$['DescripcionServicio']['Codigo']</path>
+            <content>10020</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
         <con:credentials>
           <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
           <con:authType>No Authorization</con:authType>
         </con:credentials>
         <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
         <con:parameters>
           <con:entry key="Rut" value="130458777"/>
           <con:entry key="Clave" value="A012345678"/>
