@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="e9111857-894f-4b2e-a826-9d4803b77942" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_ValidarDatos_AltaListaBlancaRUT" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="e9111857-894f-4b2e-a826-9d4803b77942fileName">TC_ValidarDatos_AltaListaBlancaRUT</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="REST Inicio_Sesion" id="f0555cf7-cef5-4c6d-a473-e3b0190b005a">
+    <con:settings/>
+    <con:config service="Kapsch TrafficCom Chile - ASP.Net Web API (Rest) - Intervial" methodName="ValidarDatos_IniciarSesion" resourcePath="/api/ValidarDatos/IniciarSesion" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="REST Inicio_Sesion" id="61b75359-a177-4905-a4fc-98812e0aa8c8" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://148.198.229.21:8096</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://148.198.229.21/api/ValidarDatos/IniciarSesion</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <con:entry key="Rut" value="12449429K"/>
+          <con:entry key="Clave" value="A012345678"/>
+          <con:entry key="IP" value="10.0.0.0"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="PropertyTransfer 1" id="d825e785-261c-4aca-9946-fb655746cc8d">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>CodigoSesion</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>REST Inicio_Sesion</con:sourceStep>
+        <con:sourcePath>$['Objeto']['CodigoSesion']</con:sourcePath>
+        <con:targetType>CodigoSesion</con:targetType>
+        <con:targetStep>REST AltaListaBlancaRUT</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="REST AltaListaBlancaRUT" id="491dc22a-17a6-4619-90e3-b43c385d551e">
+    <con:settings/>
+    <con:config service="Kapsch TrafficCom Chile - ASP.Net Web API (Rest) - Intervial" methodName="ValidarDatos_AltaListaBlancaRUT" resourcePath="/api/ValidarDatos/AltaListaBlancaRUT" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="REST AltaListaBlancaRUT" id="81183f9a-3384-4ec8-8bbc-4881646f4e25" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://148.198.229.21:8096</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://148.198.229.21/api/ValidarDatos/AltaListaBlancaRUT</con:originalUri>
+        <con:assertion type="JsonPath Match" id="874ff628-75ab-47a7-a386-5a1565cfc5fc" name="Match content of [Codigo]">
+          <con:configuration>
+            <path>$['DescripcionServicio']['Codigo']</path>
+            <content>10020</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <con:entry key="IP" value="10.0.0.0"/>
+          <con:entry key="CodigoSesion" value="30764375"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>f0555cf7-cef5-4c6d-a473-e3b0190b005a</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

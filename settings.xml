@@ -1,24 +1,425 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="7bce5bdf-508c-4bee-9d41-fdf17b92c038" created="2.6.0" activeEnvironment="INTERVIAL" name="KTC TrafficCom INTERVIAL WS" resourceRoot="" updated="2.6.0" encryptionMode="Not encrypted" compositeProjectFormat="1.3" xmlns:con="http://eviware.com/soapui/config">
+<con:soapui-project id="7bce5bdf-508c-4bee-9d41-fdf17b92c038" created="2.6.0" activeEnvironment="INTERVIAL" name="KTC TrafficCom INTERVIAL WS" resourceRoot="" updated="2.6.0" encryptionMode="Not encrypted" compositeProjectFormat="1.3" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config">
   <con:settings>
     <con:setting id="7bce5bdf-508c-4bee-9d41-fdf17b92c038fileName">KTC-TrafficCom-INTERVIAL-WS</con:setting>
+    <con:setting id="IncludeOverview">true</con:setting>
+    <con:setting id="IncludeResults">true</con:setting>
+    <con:setting id="FlowLayout">false</con:setting>
+    <con:setting id="ErrorDetails">true</con:setting>
+    <con:setting id="IncludeCoverage">true</con:setting>
   </con:settings>
   <con:savedRecentRuns>1</con:savedRecentRuns>
   <con:requirements/>
-  <con:properties/>
+  <con:properties></con:properties>
   <con:wssContainer/>
   <con:databaseConnectionContainer>
     <con:databaseConnection>
-      <con:name>dataDriven</con:name>
-      <con:driver xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-      <con:connectionString xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-      <con:password/>
+      <con:name>Conexion_BD</con:name>
+      <con:driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</con:driver>
+      <con:connectionString>jdbc:sqlserver://148.198.229.21\BO_QA:1433;databaseName=BO_COBO;user=sa;password=PASS_VALUE</con:connectionString>
+      <con:password>Incore632!</con:password>
       <con:connectionProperties/>
     </con:databaseConnection>
   </con:databaseConnectionContainer>
   <con:jmsConnectionContainer/>
   <con:oAuth2ProfileContainer/>
   <con:oAuth1ProfileContainer/>
+  <con:beforeRunScript>/**
+*
+* Below is the TearDown script for SoapUI Project level
+* Which create a custom report in a  given file
+* Modify the variable "reportFileName" below
+*
+**/
+//Modify the file as needed for report file
+//def reportFileName = '/tmp/abctestreport.txt'
+//Adding the below as user wants specific directory
+//Get the project path
+
+def dataFolder =  new com.eviware.soapui.support.GroovyUtils(context).projectPath
+
+//Create today's date for storing response
+def today = new Date().format("yyyy-MM-dd")
+
+def filePrefix = "${dataFolder}/TestReports/xxx_WebAPI_${today}" as String
+
+def fileNamePart = new Date().format("yyyy-MM-dd'T'HH.mm.ss")
+
+//creating filename dynamically.
+def reportFileName = "${filePrefix}/xxx_WebAPI_TestReport_${fileNamePart}.txt" as String
+
+
+//NOTE: Not required to edit beyond this point
+
+/**
+* This class holds the test case details
+**/
+class TestCaseResultHolder {
+    def log
+    Map&lt;String, String> properties = [:]
+    boolean status
+
+    def createProperties(testCase) {
+        testCase.getPropertyNames().each { key ->
+            properties[key] = testCase.getPropertyValue(key)
+        }       
+    }
+
+    def getCaseResult(caseRunner, caseName) {
+        log.info "Checking test case status ${caseName}"
+        if ( caseRunner.status.toString() == 'FAILED' ){
+            log.error "Test case $caseName has failed"
+            for ( stepResult in caseRunner?.results ){
+                stepResult.messages.each() { msg -> log.info msg }
+            }
+            return false
+        } else {
+            log.info "${caseName} is passed"
+        }
+        true
+    }
+
+    def buildCaseResult(caseRunner, caseName) {
+        status = getCaseResult(caseRunner, caseName)
+        if (!status) {
+            createProperties(caseRunner.testCase)
+        }
+    }
+
+}
+
+/**
+* This class holds the test suite details
+**/
+class SuiteResultsHolder {
+
+    def log
+    Map&lt;String, TestCaseResultHolder> casaeResults = [:]
+    int testCaseCount = 0
+    int passedCasesCount = 0
+    int failedCasesCount = 0
+
+    def buildSuiteResults(suiteRunner, suiteName){      
+        log.info "Building results of test suite ${suiteName}"
+        for ( caseRunner in suiteRunner?.results ) {
+            def caseName = caseRunner.testCase.name
+            testCaseCount++
+            def tcHolder = new TestCaseResultHolder(log: log)
+            tcHolder.buildCaseResult(caseRunner, caseName)          
+            casaeResults[caseName] = tcHolder
+            if (tcHolder.status) {
+                passedCasesCount++
+            } else {
+                failedCasesCount++
+            }
+        }
+    }
+
+    def getStatus() {
+        (0 &lt; failedCasesCount) ? false : true
+    }
+
+}
+
+/**
+* This class holds the project details
+**/
+class ProjectResultsHolder {
+
+    def log
+    Map&lt;String, SuiteResultsHolder> suiteResults = [:]
+    int suiteCount = 0
+    int passedSuitecount = 0
+    int failedSuiteCount = 0
+
+    def buildProjectResults(projectRunner, projectName) {
+        log.info "Building results of test project ${projectName}"          
+        for(suiteRunner in projectRunner?.results) {
+            def suiteName =  suiteRunner.testSuite.name
+            suiteCount++
+            def suiteResultsHolder = new SuiteResultsHolder(log: log)
+            suiteResultsHolder.buildSuiteResults(suiteRunner, suiteName)
+            suiteResults[suiteName] = suiteResultsHolder
+            if (suiteResultsHolder.status) {
+                passedSuitecount++
+            } else {
+                failedSuiteCount++
+            }
+        }
+    }
+
+    def getStatus() {
+        (0 &lt; failedSuiteCount) ? false : true
+    }
+
+}
+
+//Get the status string based on boolean
+def getResult(status){ status == true ? 'SUCCEED' : 'FAILED'}
+
+//Draws a line
+def drawLine(def letter = '=', def count = 70) { letter.multiply(count)}
+
+//Gets the summary report
+def getSummaryReport(project, projectResultHolder) {
+    def report = new StringBuffer()
+    report.append(drawLine()).append('\n')
+    report.append("\t\t\tTest Execution Summary\n")
+    report.append(drawLine('-', 60)).append('\n')
+    report.append("Project : ${project.name}\n")
+    report.append("Result : ${getResult(projectResultHolder.status)}\n")
+    report.append("Total test suites executed: ${projectResultHolder.suiteCount}\n")
+    report.append("Test suites passed: ${projectResultHolder.passedSuitecount}\n")
+    report.append("Test suites failed: ${projectResultHolder.failedSuiteCount}\n")
+    report.append(drawLine()).append('\n')
+    report
+}
+
+//Gets the test case report
+def getTestCaseReport(testCaseReport) {
+    def report = new StringBuffer()
+    report.append(drawLine('-', 60)).append('\n')
+    report.append("\t\tTest Case Details:\n")
+    report.append(drawLine('-', 60)).append('\n')
+    testCaseReport.each { kase, tcReport ->
+        report.append("Name : ${kase}\n")
+        report.append("Status : ${getResult(tcReport.status)}\n")
+        if (!tcReport.status) {
+            report.append("Properties : ${tcReport.properties.toString()}\n")
+        }
+    }
+    report
+}
+
+//Get the detailed report
+def getDetailedReport(projectResultHolder) {
+    def report = new StringBuffer()
+    report.append(drawLine()).append('\n')
+    report.append("\t\t\tTest Execution Detailed Report\n")
+    report.append(drawLine()).append('\n')
+    projectResultHolder.suiteResults.each { suite, details ->
+        report.append("Test Suite : ${suite}\n")
+        report.append("Result : ${getResult(details.status)}\n")
+        report.append("Total Cases : ${details.testCaseCount}\n")
+        report.append("Cases Passed : ${details.passedCasesCount}\n")
+        report.append("Cases Failed: ${details.failedCasesCount}\n")
+        report.append(getTestCaseReport(details.casaeResults))
+        report.append(drawLine()).append('\n')
+        report.append(drawLine()).append('\n')
+    }
+    report
+}
+
+//Save the contents to a file
+def saveToFile(file, content) {
+    if (!file.parentFile.exists()) {
+        file.parentFile.mkdirs()
+        log.info "Directory did not exist, created"
+    }
+    file.write(content) 
+    assert file.exists(), "${file.name} not created"
+}
+
+def holder = new ProjectResultsHolder(log: log)
+holder.buildProjectResults(runner, project.name)
+
+def finalReport = new StringBuffer()
+finalReport.append(getSummaryReport(project, holder))
+finalReport.append(getDetailedReport(holder))
+
+def reportFile = new File(reportFileName)
+saveToFile(reportFile, finalReport.toString())</con:beforeRunScript>
+  <con:afterRunScript>//creando el path donde se almacenarán los reportes de ejecución
+def dataFolder =  new com.eviware.soapui.support.GroovyUtils(context).projectPath
+
+//Creando fecha de creación archivo
+def today = new Date().format("yyyy-MM-dd")
+//creando la ruta donde se almacenaran los archivos de salida por cada ejecución dentro del proyecto
+def filePrefix = "${dataFolder}/TestReports/KTC_BO_WebAPI_${today}" as String
+
+def fileNamePart = new Date().format("yyyy-MM-dd'T'HH.mm.ss")
+
+//creando el archivo de ejecución dinámico
+def reportFileName = "${filePrefix}//KTC_BO_INTERVIAL_${fileNamePart}.txt" as String
+
+/**
+* Clase que contiene el detalle del caso de prueba 
+**/
+class TestCaseResultHolder {
+    def log
+    Map&lt;String, String> properties = [:]
+    boolean status
+
+    def createProperties(testCase) {
+        testCase.getPropertyNames().each { key ->
+            properties[key] = testCase.getPropertyValue(key)
+        }       
+    }
+
+    def getCaseResult(caseRunner, caseName) {
+        log.info "Comprobando estado del caso de prueba ${caseName}"
+        if ( caseRunner.status.toString() == 'FAIL' ){
+            log.error "Test case $caseName ha fallado"
+            for ( stepResult in caseRunner?.results ){
+                stepResult.messages.each() { msg -> log.info msg }
+            }
+            return false
+        } else {
+            log.info "${caseName} exitoso"
+        }
+        true
+    }
+
+    def buildCaseResult(caseRunner, caseName) {
+        status = getCaseResult(caseRunner, caseName)
+        if (!status) {
+            createProperties(caseRunner.testCase)
+        }
+    }
+
+}
+
+/**
+* Clase que contiene el detalle del test suite ejecutado
+**/
+class SuiteResultsHolder {
+
+    def log
+    Map&lt;String, TestCaseResultHolder> casaeResults = [:]
+    int testCaseCount = 0
+    int passedCasesCount = 0
+    int failedCasesCount = 0
+
+    def buildSuiteResults(suiteRunner, suiteName){      
+        log.info "Construyendo resultado de ejecución de test suite ${suiteName}"
+        for ( caseRunner in suiteRunner?.results ) {
+            def caseName = caseRunner.testCase.name
+            testCaseCount++
+            def tcHolder = new TestCaseResultHolder(log: log)
+            tcHolder.buildCaseResult(caseRunner, caseName)          
+            casaeResults[caseName] = tcHolder
+            if (tcHolder.status) {
+                passedCasesCount++
+            } else {
+                failedCasesCount++
+            }
+        }
+    }
+
+    def getStatus() {
+        (0 &lt; failedCasesCount) ? false : true
+    }
+
+}
+
+/**
+* Esta clase contiene el detalle del proyecto 
+**/
+class ProjectResultsHolder {
+
+    def log
+    Map&lt;String, SuiteResultsHolder> suiteResults = [:]
+    int suiteCount = 0
+    int passedSuitecount = 0
+    int failedSuiteCount = 0
+
+    def buildProjectResults(projectRunner, projectName) {
+        log.info "Generando reporte del proyecto ejecutado${projectName}"          
+        for(suiteRunner in projectRunner?.results) {
+            def suiteName =  suiteRunner.testSuite.name
+            suiteCount++
+            def suiteResultsHolder = new SuiteResultsHolder(log: log)
+            suiteResultsHolder.buildSuiteResults(suiteRunner, suiteName)
+            suiteResults[suiteName] = suiteResultsHolder
+            if (suiteResultsHolder.status) {
+                passedSuitecount++
+            } else {
+                failedSuiteCount++
+            }
+        }
+    }
+
+    def getStatus() {
+        (0 &lt; failedSuiteCount) ? false : true
+    }
+
+}
+
+//Obteniendo el estatus de cada resultado.
+def getResult(status){ status == true ? 'PASS' : 'FAIL'}
+
+//Insertando lineas
+def drawLine(def letter = '=', def count = 70) { letter.multiply(count)}
+
+//Generando el item resumen de ejecución en reporte
+def getSummaryReport(project, projectResultHolder) {
+    def report = new StringBuffer()
+    report.append(drawLine()).append('\n')
+    report.append("\t\t\tResumen Ejecución Proyecto WS INTERVIAL\n")
+    report.append(drawLine('-', 60)).append('\n')
+    report.append("Proyecto : ${project.name}\n")
+    report.append("Resultado : ${getResult(projectResultHolder.status)}\n")
+    report.append("Total test suites ejecutados: ${projectResultHolder.suiteCount}\n")
+    report.append("Test suites OK: ${projectResultHolder.passedSuitecount}\n")
+    report.append("Test suites NO OK: ${projectResultHolder.failedSuiteCount}\n")
+    report.append(drawLine()).append('\n')
+    report
+}
+
+//Obteniendo reporte de casos de prueba
+def getTestCaseReport(testCaseReport) {
+    def report = new StringBuffer()
+    report.append(drawLine('-', 60)).append('\n')
+    report.append("\t\tDetalle Ejecución Casos de Prueba:\n")
+    report.append(drawLine('-', 60)).append('\n')
+    testCaseReport.each { kase, tcReport ->
+        report.append("Nombre : ${kase}\n")
+        report.append("Status : ${getResult(tcReport.status)}\n")
+        if (!tcReport.status) {
+            report.append("Propiedades : ${tcReport.properties.toString()}\n")
+        }
+    }
+    report
+}
+
+//Obteniendo detalle del proyecto - test suite 
+def getDetailedReport(projectResultHolder) {
+    def report = new StringBuffer()
+    report.append(drawLine()).append('\n')
+    report.append("\t\t\tDetalle Ejecución Test Suite\n")
+    report.append(drawLine()).append('\n')
+    projectResultHolder.suiteResults.each { suite, details ->
+        report.append("Test Suite : ${suite}\n")
+        report.append("Resultado : ${getResult(details.status)}\n")
+        report.append("Total Casos : ${details.testCaseCount}\n")
+        report.append("Casos OK : ${details.passedCasesCount}\n")
+        report.append("Cases NO OK: ${details.failedCasesCount}\n")
+        report.append(getTestCaseReport(details.casaeResults))
+        report.append(drawLine()).append('\n')
+        report.append(drawLine()).append('\n')
+    }
+    report
+}
+
+//Guardando archivo en directorio
+def saveToFile(file, content) {
+    if (!file.parentFile.exists()) {
+        file.parentFile.mkdirs()
+        log.info "No existe directorio, creando nuevo"
+    }
+    file.write(content) 
+    assert file.exists(), "${file.name} directorio ya existe"
+}
+
+def holder = new ProjectResultsHolder(log: log)
+holder.buildProjectResults(runner, project.name)
+
+def finalReport = new StringBuffer()
+finalReport.append(getSummaryReport(project, holder))
+finalReport.append(getDetailedReport(holder))
+
+def reportFile = new File(reportFileName)
+saveToFile(reportFile, finalReport.toString())</con:afterRunScript>
   <con:eventHandlers type="RequestFilter.filterRequest" name="RequestFilter.filterRequest">
     <con:script>// Sample event script to add custom HTTP header to all outgoing REST, SOAP and HTTP(S) calls
 // This code is often used for adding custom authentication to SoapUI Pro tests
@@ -54,10 +455,10 @@
     </con:service>
     <con:databaseConnectionContainer>
       <con:databaseConnection>
-        <con:name>dataDriven</con:name>
-        <con:driver xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-        <con:connectionString xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-        <con:password/>
+        <con:name>Conexion_BD</con:name>
+        <con:driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</con:driver>
+        <con:connectionString>jdbc:sqlserver://148.198.229.21\BO_QA:1433;databaseName=BO_COBO;user=sa;password=PASS_VALUE</con:connectionString>
+        <con:password>Incore632!</con:password>
         <con:connectionProperties/>
       </con:databaseConnection>
     </con:databaseConnectionContainer>

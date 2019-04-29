@@ -108,10 +108,12 @@
     <con:request name="Request 1" id="2a076280-1d88-4b98-9e57-3b4fcabce288" mediaType="application/json">
       <con:settings/>
       <con:endpoint>http://148.198.229.21:8096</con:endpoint>
+      <con:request/>
       <con:credentials>
         <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
         <con:authType>No Authorization</con:authType>
       </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
       <con:parameters/>
       <con:environmentSpec>
         <con:entry environmentId="f4e67d1f-9f6b-412e-a458-6df8a95eac0c">

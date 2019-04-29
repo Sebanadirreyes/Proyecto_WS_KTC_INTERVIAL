@@ -4,6 +4,319 @@
     <con:setting id="344a8b89-b6a2-4c8a-8688-ecf9451e802ffileName">TC_Facturacion_ObtenerBoleta</con:setting>
   </con:settings>
   <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="datasource" name="DS_Obtener_Boleta_Cli" id="0edba525-aba6-4034-8ac2-07343e0b665e">
+    <con:settings>
+      <con:setting id="com.eviware.soapui.impl.wsdl.teststeps.datasource.DataSourceContainer@prepared-properties">&lt;entry key="NumeroDocumento" value="052420148" xmlns="http://eviware.com/soapui/config"/></con:setting>
+    </con:settings>
+    <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:dataSource type="JDBC">
+        <con:configuration>
+          <driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver>
+          <connstr>jdbc:sqlserver://148.198.229.21\BO_QA:1433;databaseName=BO_COBO;user=sa;password=PASS_VALUE</connstr>
+          <pass>Incore632!</pass>
+          <Connection>Conexion_BD( INTERVIAL )</Connection>
+          <query>Select Top 10 TrP.RegistrationAccessibilityValidacion As
+  TrP_RegistrationAccessibilityValidacion, TrP.FechaCreacion As
+  TrP_FechaCreacion, TrP.EstadoPatente As TrP_EstadoPatente, c.HabilitadoAMB As
+  c_HabilitadoAMB, TrP.EquipmentStatus As TrP_EquipmentStatus,
+  c.TipoMedioPagoAutomatico As c_TipoMedioPagoAutomatico, p.ApellidoMaterno As
+  p_ApellidoMaterno, TrP.ID_Tarifa As TrP_ID_Tarifa,
+  c.CodigoUsuarioActualizacion As c_CodigoUsuarioActualizacion,
+  TrP.DiscrepanciaCategoriaTag As TrP_DiscrepanciaCategoriaTag,
+  p.CtaComercialPredeterminada As p_CtaComercialPredeterminada,
+  c.CodigoDomicilioParticular As c_CodigoDomicilioParticular, TrP.TagInexistente
+  As TrP_TagInexistente, TrP.ImagenID As TrP_ImagenID, p.FechaHoraModificacion
+  As p_FechaHoraModificacion, TrP.PatenteReValidada As TrP_PatenteReValidada,
+  TrP.Estado As TrP_Estado, p.ApellidoMaternoContactoComercial As
+  p_ApellidoMaternoContactoComercial, p.RecibeClavePorMail As
+  p_RecibeClavePorMail, c.CodigoClienteFacturacion As
+  c_CodigoClienteFacturacion, TrP.DiscrepanciaPatenteTag As
+  TrP_DiscrepanciaPatenteTag, c.SaldoConvenio As c_SaldoConvenio,
+  TrP.Categoria As TrP_Categoria, TrP.CategoriaEsperadaVehiculo As
+  TrP_CategoriaEsperadaVehiculo, p.DebeCambiarPassword As p_DebeCambiarPassword,
+  p.LugarNacimiento As p_LugarNacimiento,
+  TrP.RegistrationAccessibilityPatenteTraseraOCR As
+  TrP_RegistrationAccessibilityPatenteTraseraOCR, p.CodigoPersona As
+  p_CodigoPersona, p.CodigoSituacionIVA As p_CodigoSituacionIVA,
+  p.VencimientoPassword As p_VencimientoPassword,
+  TrP.GeneradoPorDiscrepanciaCategoria As TrP_GeneradoPorDiscrepanciaCategoria,
+  c.FechaAlta As c_FechaAlta, p.AdheridoPA As p_AdheridoPA, c.CicloFacturacion
+  As c_CicloFacturacion, c.CodigoEstadoConvenio As c_CodigoEstadoConvenio,
+  c.RecibirInfoPorMail As c_RecibirInfoPorMail,
+  c.CodigoPersonaMedioPagoAutomatico As c_CodigoPersonaMedioPagoAutomatico,
+  TrP.PatenteOCR As TrP_PatenteOCR, c.FechaActualizacion As
+  c_FechaActualizacion, TrP.CategoriaTAG As TrP_CategoriaTAG, c.PlanComercial As
+  c_PlanComercial, c.SinCuenta As c_SinCuenta, p.Pregunta As p_Pregunta,
+  c.CodigoConvenioExterno As c_CodigoConvenioExterno, p.GastosCobranzas As
+  p_GastosCobranzas, c.CodigoConvenioFacturacion As c_CodigoConvenioFacturacion,
+  TrP.PatenteValidada As TrP_PatenteValidada, TrP.NumeroCarril As
+  TrP_NumeroCarril, TrP.BatteryInsertionDate As TrP_BatteryInsertionDate,
+  TrP.NumberCoordinatedTAG As TrP_NumberCoordinatedTAG, TrP.EstadoTAG As
+  TrP_EstadoTAG, TrP.Velocidad As TrP_Velocidad, p.FechaHoraCreacion As
+  p_FechaHoraCreacion, c.CodigoCampania As c_CodigoCampania,
+  c.UltimoAjusteSencillo As c_UltimoAjusteSencillo, TrP.IssuerIdentifier As
+  TrP_IssuerIdentifier, TrP.Importe As TrP_Importe, TrP.Sentido As TrP_Sentido,
+  p.InactivaMediosComunicacionRNUT As p_InactivaMediosComunicacionRNUT,
+  TrP.ContractSerialNumberOriginal As TrP_ContractSerialNumberOriginal,
+  c.FechaUltimaEmision As c_FechaUltimaEmision,
+  TrP.RegistrationAccessibilityPatenteOCR As
+  TrP_RegistrationAccessibilityPatenteOCR, TrP.ContractSerialNumber As
+  TrP_ContractSerialNumber, c.CuentasActivas As c_CuentasActivas,
+  TrP.IDTransitoPendiente As TrP_IDTransitoPendiente, TrP.ContextMark As
+  TrP_ContextMark, TrP.DiscrepanciaPatenteNoConfiable As
+  TrP_DiscrepanciaPatenteNoConfiable, c.FechaActualizacionMedioPago As
+  c_FechaActualizacionMedioPago, c.VersionConvenio As c_VersionConvenio,
+  TrP.TAGPocoProbable As TrP_TAGPocoProbable, p.Sexo As p_Sexo, c.Procesado As
+  c_Procesado, p.UsuarioCreacion As p_UsuarioCreacion,
+  TrP.CodigoMotivoNoFacturable As TrP_CodigoMotivoNoFacturable, p.Nombre As
+  p_Nombre, p.Apellido As p_Apellido, c.TipoTotalizacionDocumentosCobro As
+  c_TipoTotalizacionDocumentosCobro, p.SexoContactoComercial As
+  p_SexoContactoComercial, TrP.NumeroPuntoCobro As TrP_NumeroPuntoCobro,
+  TrP.FechaHoraReValidacion As TrP_FechaHoraReValidacion,
+  TrP.CategoriaReValidada As TrP_CategoriaReValidada,
+  c.TipoComprobanteFiscalAEmitir As c_TipoComprobanteFiscalAEmitir,
+  TrP.EstadoTransitoPendiente As TrP_EstadoTransitoPendiente, TrP.TipoValidacion
+  As TrP_TipoValidacion, p.UsuarioModificacion As p_UsuarioModificacion,
+  TrP.ContextMarkOriginal As TrP_ContextMarkOriginal, TrP.CodigoConcesionaria As
+  TrP_CodigoConcesionaria, TrP.FechaModificacion As TrP_FechaModificacion,
+  p.Respuesta As p_Respuesta, TrP.UsuarioCreacion As TrP_UsuarioCreacion,
+  c.CodigoDomicilioFacturacion As c_CodigoDomicilioFacturacion,
+  TrP.RegistrationAccessibility As TrP_RegistrationAccessibility,
+  c.CodigoGrupoFacturacion As c_CodigoGrupoFacturacion, TrP.FechaHoraValidacion
+  As TrP_FechaHoraValidacion, TrP.ReValidador As TrP_ReValidador,
+  p.FechaNacimiento As p_FechaNacimiento, TrP.NumCorrCO As TrP_NumCorrCO,
+  c.CodigoTipoCliente As c_CodigoTipoCliente, c.CodigoCliente As
+  c_CodigoCliente, TrP.TieneImagenReferencia As TrP_TieneImagenReferencia,
+  TrP.NumCorrCA As TrP_NumCorrCA, c.FechaInicioVigencia As
+  c_FechaInicioVigencia, c.VersionAnexo1 As c_VersionAnexo1, TrP.TipoDia As
+  TrP_TipoDia, TrP.ClaseCategoria As TrP_ClaseCategoria,
+  p.EmailContactoComercial As p_EmailContactoComercial, c.AdheridoPA As
+  c_AdheridoPA, p.Personeria As p_Personeria, c.NumeroConvenio As
+  c_NumeroConvenio, c.Observaciones As c_Observaciones, p.NumeroDocumento As
+  p_NumeroDocumento, p.Password As p_Password, TrP.Validador As TrP_Validador,
+  TrP.DiscrepanciaCategoriaVehiculo As TrP_DiscrepanciaCategoriaVehiculo,
+  p.CodigoActividad As p_CodigoActividad, TrP.TipoTarifa As TrP_TipoTarifa,
+  c.Inserto3 As c_Inserto3, c.Inserto4 As c_Inserto4, TrP.Etiqueta As
+  TrP_Etiqueta, c.CodigoConcesionaria As c_CodigoConcesionaria, p.Giro
+  As p_Giro, TrP.PatenteTraseraOCR As TrP_PatenteTraseraOCR,
+  p.NombreContactoComercial As p_NombreContactoComercial,
+  c.UbicacionFisicaCarpeta As c_UbicacionFisicaCarpeta, TrP.FechaHora As
+  TrP_FechaHora, c.Inserto1 As c_Inserto1, TrP.ConfiabilidadPatenteOCR
+  As TrP_ConfiabilidadPatenteOCR, c.Inserto2 As c_Inserto2,
+  c.SuscritoListaBlanca As c_SuscritoListaBlanca, p.FechaHoraActualizacion As
+  p_FechaHoraActualizacion, p.Semaforo1 As p_Semaforo1, c.OrigenMandato As
+  c_OrigenMandato, c.CodigoTipoConvenio As c_CodigoTipoConvenio,
+  TrP.CategoriaDetectada As TrP_CategoriaDetectada, TrP.Patente As TrP_Patente,
+  TrP.ElegidoPorAzar As TrP_ElegidoPorAzar, TrP.ConfiabilidadPatenteTraseraOCR
+  As TrP_ConfiabilidadPatenteTraseraOCR, c.AccionRNUT As c_AccionRNUT,
+  TrP.AuditFileLineID As TrP_AuditFileLineID, c.CodigoConvenio As
+  c_CodigoConvenio, p.CodigoDocumento As p_CodigoDocumento,
+  p.ApellidoContactoComercial As p_ApellidoContactoComercial, p.Semaforo3 As
+  p_Semaforo3, c.FechaBaja As c_FechaBaja, TrP.TypeOfContract As
+  TrP_TypeOfContract, TrP.UsuarioModificacion As TrP_UsuarioModificacion,
+  TrP.PatenteEsperada As TrP_PatenteEsperada, p.InicializarNotificacionesTAGs As
+  p_InicializarNotificacionesTAGs, TrP.OBEStatus As TrP_OBEStatus,
+  c.Suspendido As c_Suspendido, c.RespaldoTipoMedioPagoAutomatico As
+  c_RespaldoTipoMedioPagoAutomatico, TrP.ContextVersion As TrP_ContextVersion,
+  TrP.ConfiabilidadPatenteDetectada As TrP_ConfiabilidadPatenteDetectada,
+  TrP.DiscrepanciaTAGNoDetectado As TrP_DiscrepanciaTAGNoDetectado,
+  c.FechaUltimoCorte As c_FechaUltimoCorte, c.NoGenerarIntereses As
+  c_NoGenerarIntereses, p.SuscritoListaBlanca As p_SuscritoListaBlanca,
+  TrP.TransactionResult As TrP_TransactionResult, TrP.CodigoTAG As
+  TrP_CodigoTAG, p.InactivaDomicilioRNUT As p_InactivaDomicilioRNUT,
+  TrP.PatenteDetectada As TrP_PatenteDetectada, p.TipoCliente As p_TipoCliente,
+  TrP.ConfiabilidadPatenteTraseraDetectada As
+  TrP_ConfiabilidadPatenteTraseraDetectada, TrP.CodigoConvenioExterno As
+  TrP_CodigoConvenioExterno, TrP.NumeroDocumento As TrP_NumeroDocumento,
+  TrP.CategoriaValidada As TrP_CategoriaValidada
+From personas p Inner Join
+  convenio c On p.CodigoPersona = c.CodigoCliente Inner Join
+  TransitosPendientesDelCOP TrP On c.CodigoConvenio = TrP.IDTransitoPendiente
+Where p.RecibeClavePorMail = 1 And c.CuentasActivas = 1 And p.NumeroDocumento =
+  :NumeroDocumento</query>
+          <fetchSize/>
+          <stored-procedure>false</stored-procedure>
+        </con:configuration>
+      </con:dataSource>
+      <con:shared>true</con:shared>
+      <con:restartShared>true</con:restartShared>
+      <con:preload>true</con:preload>
+      <con:property>TrP_RegistrationAccessibilityValidacion</con:property>
+      <con:property>TrP_FechaCreacion</con:property>
+      <con:property>TrP_EstadoPatente</con:property>
+      <con:property>c_HabilitadoAMB</con:property>
+      <con:property>TrP_EquipmentStatus</con:property>
+      <con:property>c_TipoMedioPagoAutomatico</con:property>
+      <con:property>p_ApellidoMaterno</con:property>
+      <con:property>TrP_ID_Tarifa</con:property>
+      <con:property>c_CodigoUsuarioActualizacion</con:property>
+      <con:property>TrP_DiscrepanciaCategoriaTag</con:property>
+      <con:property>p_CtaComercialPredeterminada</con:property>
+      <con:property>c_CodigoDomicilioParticular</con:property>
+      <con:property>TrP_TagInexistente</con:property>
+      <con:property>TrP_ImagenID</con:property>
+      <con:property>p_FechaHoraModificacion</con:property>
+      <con:property>TrP_PatenteReValidada</con:property>
+      <con:property>TrP_Estado</con:property>
+      <con:property>p_ApellidoMaternoContactoComercial</con:property>
+      <con:property>p_RecibeClavePorMail</con:property>
+      <con:property>c_CodigoClienteFacturacion</con:property>
+      <con:property>TrP_DiscrepanciaPatenteTag</con:property>
+      <con:property>c_SaldoConvenio</con:property>
+      <con:property>TrP_Categoria</con:property>
+      <con:property>TrP_CategoriaEsperadaVehiculo</con:property>
+      <con:property>p_DebeCambiarPassword</con:property>
+      <con:property>p_LugarNacimiento</con:property>
+      <con:property>TrP_RegistrationAccessibilityPatenteTraseraOCR</con:property>
+      <con:property>p_CodigoPersona</con:property>
+      <con:property>p_CodigoSituacionIVA</con:property>
+      <con:property>p_VencimientoPassword</con:property>
+      <con:property>TrP_GeneradoPorDiscrepanciaCategoria</con:property>
+      <con:property>c_FechaAlta</con:property>
+      <con:property>p_AdheridoPA</con:property>
+      <con:property>c_CicloFacturacion</con:property>
+      <con:property>c_CodigoEstadoConvenio</con:property>
+      <con:property>c_RecibirInfoPorMail</con:property>
+      <con:property>c_CodigoPersonaMedioPagoAutomatico</con:property>
+      <con:property>TrP_PatenteOCR</con:property>
+      <con:property>c_FechaActualizacion</con:property>
+      <con:property>TrP_CategoriaTAG</con:property>
+      <con:property>c_PlanComercial</con:property>
+      <con:property>c_SinCuenta</con:property>
+      <con:property>p_Pregunta</con:property>
+      <con:property>c_CodigoConvenioExterno</con:property>
+      <con:property>p_GastosCobranzas</con:property>
+      <con:property>c_CodigoConvenioFacturacion</con:property>
+      <con:property>TrP_PatenteValidada</con:property>
+      <con:property>TrP_NumeroCarril</con:property>
+      <con:property>TrP_BatteryInsertionDate</con:property>
+      <con:property>TrP_NumberCoordinatedTAG</con:property>
+      <con:property>TrP_EstadoTAG</con:property>
+      <con:property>TrP_Velocidad</con:property>
+      <con:property>p_FechaHoraCreacion</con:property>
+      <con:property>c_CodigoCampania</con:property>
+      <con:property>c_UltimoAjusteSencillo</con:property>
+      <con:property>TrP_IssuerIdentifier</con:property>
+      <con:property>TrP_Importe</con:property>
+      <con:property>TrP_Sentido</con:property>
+      <con:property>p_InactivaMediosComunicacionRNUT</con:property>
+      <con:property>TrP_ContractSerialNumberOriginal</con:property>
+      <con:property>c_FechaUltimaEmision</con:property>
+      <con:property>TrP_RegistrationAccessibilityPatenteOCR</con:property>
+      <con:property>TrP_ContractSerialNumber</con:property>
+      <con:property>c_CuentasActivas</con:property>
+      <con:property>TrP_IDTransitoPendiente</con:property>
+      <con:property>TrP_ContextMark</con:property>
+      <con:property>TrP_DiscrepanciaPatenteNoConfiable</con:property>
+      <con:property>c_FechaActualizacionMedioPago</con:property>
+      <con:property>c_VersionConvenio</con:property>
+      <con:property>TrP_TAGPocoProbable</con:property>
+      <con:property>p_Sexo</con:property>
+      <con:property>c_Procesado</con:property>
+      <con:property>p_UsuarioCreacion</con:property>
+      <con:property>TrP_CodigoMotivoNoFacturable</con:property>
+      <con:property>p_Nombre</con:property>
+      <con:property>p_Apellido</con:property>
+      <con:property>c_TipoTotalizacionDocumentosCobro</con:property>
+      <con:property>p_SexoContactoComercial</con:property>
+      <con:property>TrP_NumeroPuntoCobro</con:property>
+      <con:property>TrP_FechaHoraReValidacion</con:property>
+      <con:property>TrP_CategoriaReValidada</con:property>
+      <con:property>c_TipoComprobanteFiscalAEmitir</con:property>
+      <con:property>TrP_EstadoTransitoPendiente</con:property>
+      <con:property>TrP_TipoValidacion</con:property>
+      <con:property>p_UsuarioModificacion</con:property>
+      <con:property>TrP_ContextMarkOriginal</con:property>
+      <con:property>TrP_CodigoConcesionaria</con:property>
+      <con:property>TrP_FechaModificacion</con:property>
+      <con:property>p_Respuesta</con:property>
+      <con:property>TrP_UsuarioCreacion</con:property>
+      <con:property>c_CodigoDomicilioFacturacion</con:property>
+      <con:property>TrP_RegistrationAccessibility</con:property>
+      <con:property>c_CodigoGrupoFacturacion</con:property>
+      <con:property>TrP_FechaHoraValidacion</con:property>
+      <con:property>TrP_ReValidador</con:property>
+      <con:property>p_FechaNacimiento</con:property>
+      <con:property>TrP_NumCorrCO</con:property>
+      <con:property>c_CodigoTipoCliente</con:property>
+      <con:property>c_CodigoCliente</con:property>
+      <con:property>TrP_TieneImagenReferencia</con:property>
+      <con:property>TrP_NumCorrCA</con:property>
+      <con:property>c_FechaInicioVigencia</con:property>
+      <con:property>c_VersionAnexo1</con:property>
+      <con:property>TrP_TipoDia</con:property>
+      <con:property>TrP_ClaseCategoria</con:property>
+      <con:property>p_EmailContactoComercial</con:property>
+      <con:property>c_AdheridoPA</con:property>
+      <con:property>p_Personeria</con:property>
+      <con:property>c_NumeroConvenio</con:property>
+      <con:property>c_Observaciones</con:property>
+      <con:property>p_NumeroDocumento</con:property>
+      <con:property>p_Password</con:property>
+      <con:property>TrP_Validador</con:property>
+      <con:property>TrP_DiscrepanciaCategoriaVehiculo</con:property>
+      <con:property>p_CodigoActividad</con:property>
+      <con:property>TrP_TipoTarifa</con:property>
+      <con:property>c_Inserto3</con:property>
+      <con:property>c_Inserto4</con:property>
+      <con:property>TrP_Etiqueta</con:property>
+      <con:property>c_CodigoConcesionaria</con:property>
+      <con:property>p_Giro</con:property>
+      <con:property>TrP_PatenteTraseraOCR</con:property>
+      <con:property>p_NombreContactoComercial</con:property>
+      <con:property>c_UbicacionFisicaCarpeta</con:property>
+      <con:property>TrP_FechaHora</con:property>
+      <con:property>c_Inserto1</con:property>
+      <con:property>TrP_ConfiabilidadPatenteOCR</con:property>
+      <con:property>c_Inserto2</con:property>
+      <con:property>c_SuscritoListaBlanca</con:property>
+      <con:property>p_FechaHoraActualizacion</con:property>
+      <con:property>p_Semaforo1</con:property>
+      <con:property>c_OrigenMandato</con:property>
+      <con:property>c_CodigoTipoConvenio</con:property>
+      <con:property>TrP_CategoriaDetectada</con:property>
+      <con:property>TrP_Patente</con:property>
+      <con:property>TrP_ElegidoPorAzar</con:property>
+      <con:property>TrP_ConfiabilidadPatenteTraseraOCR</con:property>
+      <con:property>c_AccionRNUT</con:property>
+      <con:property>TrP_AuditFileLineID</con:property>
+      <con:property>c_CodigoConvenio</con:property>
+      <con:property>p_CodigoDocumento</con:property>
+      <con:property>p_ApellidoContactoComercial</con:property>
+      <con:property>p_Semaforo3</con:property>
+      <con:property>c_FechaBaja</con:property>
+      <con:property>TrP_TypeOfContract</con:property>
+      <con:property>TrP_UsuarioModificacion</con:property>
+      <con:property>TrP_PatenteEsperada</con:property>
+      <con:property>p_InicializarNotificacionesTAGs</con:property>
+      <con:property>TrP_OBEStatus</con:property>
+      <con:property>c_Suspendido</con:property>
+      <con:property>c_RespaldoTipoMedioPagoAutomatico</con:property>
+      <con:property>TrP_ContextVersion</con:property>
+      <con:property>TrP_ConfiabilidadPatenteDetectada</con:property>
+      <con:property>TrP_DiscrepanciaTAGNoDetectado</con:property>
+      <con:property>c_FechaUltimoCorte</con:property>
+      <con:property>c_NoGenerarIntereses</con:property>
+      <con:property>p_SuscritoListaBlanca</con:property>
+      <con:property>TrP_TransactionResult</con:property>
+      <con:property>TrP_CodigoTAG</con:property>
+      <con:property>p_InactivaDomicilioRNUT</con:property>
+      <con:property>TrP_PatenteDetectada</con:property>
+      <con:property>p_TipoCliente</con:property>
+      <con:property>TrP_ConfiabilidadPatenteTraseraDetectada</con:property>
+      <con:property>TrP_CodigoConvenioExterno</con:property>
+      <con:property>TrP_NumeroDocumento</con:property>
+      <con:property>TrP_CategoriaValidada</con:property>
+      <con:startRow/>
+      <con:endRow/>
+      <con:recordsPerIteration>1</con:recordsPerIteration>
+      <con:completeLastOperation>true</con:completeLastOperation>
+      <con:trimValues>false</con:trimValues>
+      <con:entitizeValues>false</con:entitizeValues>
+      <con:restartOnRun>true</con:restartOnRun>
+      <con:expandProperties>false</con:expandProperties>
+    </con:config>
+  </con:testStep>
   <con:testStep type="restrequest" name="REST Iniciar_Sesion" id="3bdcc2b0-8033-487b-b7a0-34e16c69289b">
     <con:settings/>
     <con:config service="Kapsch TrafficCom Chile - ASP.Net Web API (Rest) - Intervial" methodName="ValidarDatos_IniciarSesion" resourcePath="/api/ValidarDatos/IniciarSesion" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -22,8 +335,8 @@
         <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
         <con:jmsPropertyConfig/>
         <con:parameters>
-          <con:entry key="Rut" value="130458777  "/>
-          <con:entry key="Clave" value="A012345678"/>
+          <con:entry key="Rut" value="116543818"/>
+          <con:entry key="Clave" value="A12345678"/>
           <con:entry key="IP" value="10.0.0.0"/>
         </con:parameters>
       </con:restRequest>
@@ -72,20 +385,43 @@
         <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
         <con:jmsPropertyConfig/>
         <con:parameters>
-          <con:entry key="FechaEmision" value="2016-08-21"/>
-          <con:entry key="Monto" value="760000"/>
+          <con:entry key="FechaEmision" value="2017-10-31 00:00:00"/>
+          <con:entry key="Monto" value="381700"/>
           <con:entry key="IP" value="10.0.0.0"/>
           <con:entry key="TipoBoleta" value="NK"/>
-          <con:entry key="NumeroBoleta" value="94290"/>
-          <con:entry key="CodigoSesion" value="63634805"/>
+          <con:entry key="NumeroBoleta" value="2375305"/>
+          <con:entry key="CodigoSesion" value="44304179"/>
         </con:parameters>
       </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasourceloop" name="DataSource Loop" id="5511e1a1-764f-4846-8c62-5dc40a5542e0">
+    <con:settings/>
+    <con:config>
+      <dataSourceStep>DataSource_Test</dataSourceStep>
+      <targetStep>REST Iniciar_Sesion</targetStep>
+      <discardResults>true</discardResults>
     </con:config>
   </con:testStep>
   <con:properties/>
   <con:reportParameters/>
   <con:breakPoints>
     <con:testStepId>3bdcc2b0-8033-487b-b7a0-34e16c69289b</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>0edba525-aba6-4034-8ac2-07343e0b665e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>6a7460da-6585-41b9-b577-c4e4d9a22649</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>60ee6e35-f68c-4588-82e7-f188935e1b12</con:testStepId>
     <con:status>NONE</con:status>
     <con:properties/>
   </con:breakPoints>

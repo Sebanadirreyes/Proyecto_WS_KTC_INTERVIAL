@@ -70,7 +70,7 @@
         <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
         <con:jmsPropertyConfig/>
         <con:parameters>
-          <con:entry key="Captcha" value="gfpq"/>
+          <con:entry key="Captcha" value="trpm"/>
           <con:entry key="FechaEmision" value="2019-01-22 15:41:00"/>
           <con:entry key="Monto" value="100000"/>
           <con:entry key="IP" value="10.0.0.0"/>

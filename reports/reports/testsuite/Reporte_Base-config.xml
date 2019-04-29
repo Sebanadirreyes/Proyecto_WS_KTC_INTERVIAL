@@ -1,0 +1,25 @@
+<con:reportTemplate xmlns:con="http://eviware.com/soapui/config">
+  <con:name>Reporte_Base</con:name>
+  <con:reportType>TESTSUITE</con:reportType>
+  <con:reportLevel>MAINREPORT</con:reportLevel>
+  <con:data xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+  <con:subreports>FailedTestStepsReport-KTC TrafficCom INTERVIAL WS</con:subreports>
+  <con:subreports>MetricsReport-KTC TrafficCom INTERVIAL WS</con:subreports>
+  <con:subreports>ProjectCoverageChart-KTC TrafficCom INTERVIAL WS</con:subreports>
+  <con:subreports>FailedTestStepsReport</con:subreports>
+  <con:subreports>MetricsReport</con:subreports>
+  <con:subreports>ProjectCoverageChart</con:subreports>
+  <con:subreports>PropertiesReport</con:subreports>
+  <con:subreports>RequirementLinkedTestCasesReport</con:subreports>
+  <con:subreports>RequirementsReport</con:subreports>
+  <con:subreports>SecurityScanReport</con:subreports>
+  <con:subreports>SecurityTestStepOverviewReport</con:subreports>
+  <con:subreports>SecurityTestStepReport</con:subreports>
+  <con:subreports>SecurityTestStepScanListReport</con:subreports>
+  <con:subreports>TestCaseCoverageChart</con:subreports>
+  <con:subreports>TestStepParametersReport</con:subreports>
+  <con:subreports>TestStepResultsReport</con:subreports>
+  <con:subreports>TestStepSubParametersReport</con:subreports>
+  <con:subreports>TestSuiteCoverageChart</con:subreports>
+  <con:scope>PROJECT</con:scope>
+</con:reportTemplate>

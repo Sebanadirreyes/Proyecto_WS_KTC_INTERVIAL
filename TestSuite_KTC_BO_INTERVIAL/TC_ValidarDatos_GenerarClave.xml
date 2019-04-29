@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="5b811492-1ab9-475d-9705-13b37ec41f4c" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_ValidarDatos_GenerarClave" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="5b811492-1ab9-475d-9705-13b37ec41f4cfileName">TC_ValidarDatos_GenerarClave</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="REST Iniciar_Sesion" id="d950e190-d642-4afe-b73f-71ec5c20f77e">
+    <con:settings/>
+    <con:config service="Kapsch TrafficCom Chile - ASP.Net Web API (Rest) - Intervial" methodName="ValidarDatos_IniciarSesion" resourcePath="/api/ValidarDatos/IniciarSesion" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="REST Iniciar_Sesion" id="864100e0-4599-4951-9f9e-1eb3fbc89192" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://148.198.229.21:8096</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://148.198.229.21/api/ValidarDatos/IniciarSesion</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <con:entry key="Rut" value="12449429K"/>
+          <con:entry key="Clave" value="A012345678"/>
+          <con:entry key="IP" value="10.0.0.0"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="PropertyTransfer Codigo_Sesion" id="bb2eec36-d163-471b-a25f-ab958f8a6c20">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>CodigoSesion</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>REST Iniciar_Sesion</con:sourceStep>
+        <con:sourcePath>$['Objeto']['CodigoSesion']</con:sourcePath>
+        <con:targetType>CodigoSesion</con:targetType>
+        <con:targetStep>REST Obtener_Convenio</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="REST Captcha" id="1c0063c6-8843-40c6-98e6-a328556b2d4e">
+    <con:settings/>
+    <con:config service="Kapsch TrafficCom Chile - ASP.Net Web API (Rest) - Intervial" methodName="Generales_ObtenerCaptcha" resourcePath="/api/Generales/ObtenerCaptcha" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="REST Captcha" id="5f30d51c-602a-4fa0-b024-4c5c7e97489a" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://148.198.229.21:8096</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://148.198.229.21/api/Generales/ObtenerCaptcha</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <entry key="IP" value="10.0.0.0" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="REST Obtener_Convenio" id="88e09eac-3b8c-4ff7-90b9-f53c50ec751e">
+    <con:settings/>
+    <con:config service="Kapsch TrafficCom Chile - ASP.Net Web API (Rest) - Intervial" methodName="Convenios_ObtenerConvenios" resourcePath="/api/Convenios/ObtenerConvenios" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="REST Obtener_Convenio" id="5353d6b6-3450-43ae-95bd-73c8707a17b5" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://148.198.229.21:8096</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://148.198.229.21/api/Convenios/ObtenerConvenios</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <con:entry key="CodigoTipoConvenio" value="1"/>
+          <con:entry key="IP" value="10.0.0.0"/>
+          <con:entry key="CodigoSesion" value="30764375"/>
+          <con:entry key="ImprimirCSV" value="false"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="PropertyTransfer Enviar_Codigo_Convenio" id="2a38c668-31f2-4050-8cfb-a1ac617b0866">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>CodigoConvenio</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>REST Obtener_Convenio</con:sourceStep>
+        <con:sourcePath>$['Objeto'][0]['CodigoConvenio']</con:sourcePath>
+        <con:targetType>CodigoConvenio</con:targetType>
+        <con:targetStep>REST Obtener_Cuentas</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>JSONPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true">
+        <con:name>Objeto</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>REST Captcha</con:sourceStep>
+        <con:sourcePath>$['Objeto']</con:sourcePath>
+        <con:targetType>Captcha</con:targetType>
+        <con:targetStep>REST GenerarClave</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="REST Obtener_Cuentas" id="fb3d66c7-833d-43f4-b112-8fd4fd3fef51">
+    <con:settings/>
+    <con:config service="Kapsch TrafficCom Chile - ASP.Net Web API (Rest) - Intervial" methodName="Convenios_ObtenerCuentas" resourcePath="/api/Convenios/ObtenerCuentas" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="REST Obtener_Cuentas" id="08faa6b1-135a-4d77-b2f9-d3bae1bc02e5" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://148.198.229.21:8096</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://148.198.229.21/api/Convenios/ObtenerCuentas</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <con:entry key="CodigoConvenio" value="2959296"/>
+          <con:entry key="IP" value="10.0.0.0"/>
+          <con:entry key="CodigoSesion" value="${REST Obtener_Convenio#CodigoSesion}"/>
+          <con:entry key="ImprimirCSV" value="false"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="PropertyTransfer Codigo Captcha" id="a07bd4f3-2c9d-4865-a02a-fe198ec7a175">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>Patente</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>REST Obtener_Cuentas</con:sourceStep>
+        <con:sourcePath>$['Objeto'][0]['Patente']</con:sourcePath>
+        <con:targetType>Patente</con:targetType>
+        <con:targetStep>REST GenerarClave</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="REST Obtener_Medio_Contacto" id="53340b8d-3c7e-4fee-b89c-59977c40536b">
+    <con:settings/>
+    <con:config service="Kapsch TrafficCom Chile - ASP.Net Web API (Rest) - Intervial" methodName="ValidarDatos_ObtenerMediosContacto" resourcePath="/api/ValidarDatos/ObtenerMediosContacto" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="REST Obtener_Medio_Contacto" id="09da207c-ca9c-446c-b5a6-93e31e3601f8" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://148.198.229.21:8096</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://148.198.229.21/api/ValidarDatos/ObtenerMediosContacto</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <con:entry key="IP" value="10.0.0.0"/>
+          <con:entry key="CodigoSesion" value="${REST Obtener_Convenio#CodigoSesion}"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="PropertyTransfer Telefono_celular" id="26cb2f15-d9d5-4e9e-9c10-e6974fc8154b">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>TelefonoPrincipal</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>REST Obtener_Medio_Contacto</con:sourceStep>
+        <con:sourcePath>$['Objeto']['TelefonoPrincipal']</con:sourcePath>
+        <con:targetType>TelefonoCelular</con:targetType>
+        <con:targetStep>REST GenerarClave</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true">
+        <con:name>Email</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>REST Obtener_Medio_Contacto</con:sourceStep>
+        <con:sourcePath>$['Objeto']['Email']</con:sourcePath>
+        <con:targetType>Email</con:targetType>
+        <con:targetStep>REST GenerarClave</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="REST GenerarClave" id="378633b6-073a-4ad7-b786-a0d21b5577ed">
+    <con:settings/>
+    <con:config service="Kapsch TrafficCom Chile - ASP.Net Web API (Rest) - Intervial" methodName="ValidarDatos_GenerarClave" resourcePath="/api/ValidarDatos/GenerarClave" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="REST GenerarClave" id="650ef339-58e2-4b6a-964a-9e326ecaa1cd" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://148.198.229.21:8096</con:endpoint>
+        <con:request>//solo el digito verificador sera ingresado de forma manual debido a que se obtiene desde la web</con:request>
+        <con:originalUri>http://148.198.229.21/api/ValidarDatos/GenerarClave</con:originalUri>
+        <con:assertion type="JsonPath Match" id="823f84aa-4d3a-4321-a90b-6be14e56b6b6" name="Match content of [Codigo]">
+          <con:configuration>
+            <path>$['DescripcionServicio']['Codigo']</path>
+            <content>10020</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <con:entry key="Captcha" value="tcqr"/>
+          <con:entry key="TelefonoParticular" value="961918060"/>
+          <con:entry key="Email" value="Celizana@agrosuper.com"/>
+          <con:entry key="DVPatente" value="0"/>
+          <con:entry key="IP" value="10.0.0.0"/>
+          <con:entry key="Patente" value="GPGZ69"/>
+          <con:entry key="NumeroDocumento" value="${REST Iniciar_Sesion#Rut}"/>
+          <con:entry key="TelefonoCelular" value="961918060"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:setupScript/>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>1c0063c6-8843-40c6-98e6-a328556b2d4e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>fb3d66c7-833d-43f4-b112-8fd4fd3fef51</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>d950e190-d642-4afe-b73f-71ec5c20f77e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>88e09eac-3b8c-4ff7-90b9-f53c50ec751e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>53340b8d-3c7e-4fee-b89c-59977c40536b</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

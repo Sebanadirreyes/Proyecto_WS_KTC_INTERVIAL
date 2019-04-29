@@ -1,0 +1,114 @@
+<jasperReport xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportTemplate" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30" xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <property name="ireport.encoding" value="UTF-8"/>
+   <template>"../../styles.jrtx"</template>
+   <!--FIELDS & PARAMS-->
+   <title>
+      <band height="70">
+         <textField>
+            <reportElement x="159" y="13" width="229" height="42"/>
+            <textElement>
+               <font size="26"/>
+            </textElement>
+            <textFieldExpression class="java.lang.String">$F{name} + " Report"</textFieldExpression>
+         </textField>
+      </band>
+   </title>
+   <pageHeader>
+      <band/>
+   </pageHeader>
+   <detail>
+      <band height="122">
+         <!--SUBREPORTS UNDER HERE-->
+         <subreport isUsingCache="true">
+            <reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="500" height="30"/>
+            <dataSourceExpression>$P{FailedTestSteps}</dataSourceExpression>
+            <subreportExpression>"subreport:FailedTestStepsReport-KTC TrafficCom INTERVIAL WS"</subreportExpression>
+         </subreport>
+         <subreport isUsingCache="true">
+            <reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="500" height="30"/>
+            <dataSourceExpression>$P{ReportMetrics}</dataSourceExpression>
+            <subreportExpression>"subreport:MetricsReport-KTC TrafficCom INTERVIAL WS"</subreportExpression>
+         </subreport>
+         <subreport isUsingCache="true">
+            <reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="500" height="30"/>
+            <dataSourceExpression>$P{ProjectCoverage}</dataSourceExpression>
+            <subreportExpression>"subreport:ProjectCoverageChart-KTC TrafficCom INTERVIAL WS"</subreportExpression>
+         </subreport>
+         <subreport isUsingCache="true">
+            <reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="500" height="30"/>
+            <dataSourceExpression>$P{FailedTestSteps}</dataSourceExpression>
+            <subreportExpression>"subreport:FailedTestStepsReport"</subreportExpression>
+         </subreport>
+         <subreport isUsingCache="true">
+            <reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="500" height="30"/>
+            <dataSourceExpression>$P{ReportMetrics}</dataSourceExpression>
+            <subreportExpression>"subreport:MetricsReport"</subreportExpression>
+         </subreport>
+         <subreport isUsingCache="true">
+            <reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="500" height="30"/>
+            <dataSourceExpression>$P{ProjectCoverage}</dataSourceExpression>
+            <subreportExpression>"subreport:ProjectCoverageChart"</subreportExpression>
+         </subreport>
+         <subreport isUsingCache="true">
+            <reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="500" height="30"/>
+            <dataSourceExpression>$P{TestProperties}</dataSourceExpression>
+            <subreportExpression>"subreport:PropertiesReport"</subreportExpression>
+         </subreport>
+         <subreport isUsingCache="true">
+            <reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="500" height="30"/>
+            <dataSourceExpression>$P{RequirementLinkedTestCases}</dataSourceExpression>
+            <subreportExpression>"subreport:RequirementLinkedTestCasesReport"</subreportExpression>
+         </subreport>
+         <subreport isUsingCache="true">
+            <reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="500" height="30"/>
+            <dataSourceExpression>$P{TestProperties}</dataSourceExpression>
+            <subreportExpression>"subreport:RequirementsReport"</subreportExpression>
+         </subreport>
+         <subreport isUsingCache="true">
+            <reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="500" height="30"/>
+            <dataSourceExpression>$P{SecurityScanResults}</dataSourceExpression>
+            <subreportExpression>"subreport:SecurityScanReport"</subreportExpression>
+         </subreport>
+         <subreport isUsingCache="true">
+            <reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="500" height="30"/>
+            <dataSourceExpression>$P{SecurityTestStepOverviewResults}</dataSourceExpression>
+            <subreportExpression>"subreport:SecurityTestStepOverviewReport"</subreportExpression>
+         </subreport>
+         <subreport isUsingCache="true">
+            <reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="500" height="30"/>
+            <dataSourceExpression>$P{SecurityTestStepResults}</dataSourceExpression>
+            <subreportExpression>"subreport:SecurityTestStepReport"</subreportExpression>
+         </subreport>
+         <subreport isUsingCache="true">
+            <reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="500" height="30"/>
+            <dataSourceExpression>$P{SecurityTestStepScanListResults}</dataSourceExpression>
+            <subreportExpression>"subreport:SecurityTestStepScanListReport"</subreportExpression>
+         </subreport>
+         <subreport isUsingCache="true">
+            <reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="500" height="30"/>
+            <dataSourceExpression>$P{TestCaseCoverage}</dataSourceExpression>
+            <subreportExpression>"subreport:TestCaseCoverageChart"</subreportExpression>
+         </subreport>
+         <subreport isUsingCache="true">
+            <reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="500" height="30"/>
+            <dataSourceExpression>$P{TestStepParameters}</dataSourceExpression>
+            <subreportExpression>"subreport:TestStepParametersReport"</subreportExpression>
+         </subreport>
+         <subreport isUsingCache="true">
+            <reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="500" height="30"/>
+            <dataSourceExpression>$P{TestStepResults}</dataSourceExpression>
+            <subreportExpression>"subreport:TestStepResultsReport"</subreportExpression>
+         </subreport>
+         <subreport isUsingCache="true">
+            <reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="500" height="30"/>
+            <dataSourceExpression>$P{TestStepSubParameters}</dataSourceExpression>
+            <subreportExpression>"subreport:TestStepSubParametersReport"</subreportExpression>
+         </subreport>
+         <subreport isUsingCache="true">
+            <reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="500" height="30"/>
+            <dataSourceExpression>$P{TestSuiteCoverage}</dataSourceExpression>
+            <subreportExpression>"subreport:TestSuiteCoverageChart"</subreportExpression>
+         </subreport>
+      </band>
+   </detail>
+</jasperReport>

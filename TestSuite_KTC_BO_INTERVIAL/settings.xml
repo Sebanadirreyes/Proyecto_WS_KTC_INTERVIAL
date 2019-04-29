@@ -11,5 +11,7 @@
   <con:savedRecentRuns>1</con:savedRecentRuns>
   <con:runType>SEQUENTIAL</con:runType>
   <con:properties/>
+  <con:tearDownScript/>
+  <con:reportScript/>
   <con:reportParameters/>
 </con:testSuite>

@@ -64,7 +64,7 @@
         <con:jmsPropertyConfig/>
         <con:parameters>
           <con:entry key="IP" value="10.0.0.0"/>
-          <con:entry key="CodigoSesion" value="70331955"/>
+          <con:entry key="CodigoSesion" value="30764375"/>
           <con:entry key="ImprimirCSV" value="false"/>
         </con:parameters>
       </con:restRequest>
@@ -138,6 +138,10 @@
         </con:parameters>
       </con:restRequest>
     </con:config>
+  </con:testStep>
+  <con:testStep type="goto" name="Conditional Goto" id="86119b51-f719-41bd-b5ae-35e31e4e8f4b">
+    <con:settings/>
+    <con:config xsi:type="con:GotoStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
   </con:testStep>
   <con:properties/>
   <con:reportParameters/>

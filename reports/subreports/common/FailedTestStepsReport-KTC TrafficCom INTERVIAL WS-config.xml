@@ -1,0 +1,10 @@
+<con:reportTemplate xmlns:con="http://eviware.com/soapui/config">
+  <con:name>FailedTestStepsReport-KTC TrafficCom INTERVIAL WS</con:name>
+  <con:reportType>COMMON</con:reportType>
+  <con:reportLevel>SUBREPORT</con:reportLevel>
+  <con:nameInReport>FailedTestSteps</con:nameInReport>
+  <con:data xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+  <con:description>NO DESC</con:description>
+  <con:scope>PROJECT</con:scope>
+  <con:dataSource>FailedTestSteps</con:dataSource>
+</con:reportTemplate>

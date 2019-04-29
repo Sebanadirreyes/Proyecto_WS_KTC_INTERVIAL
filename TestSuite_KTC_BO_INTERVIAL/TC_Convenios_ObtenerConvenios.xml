@@ -32,7 +32,7 @@
   <con:testStep type="transfer" name="PropertyTransfer 1" id="df7b6067-6708-4983-be58-8d88fe18011e">
     <con:settings/>
     <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
         <con:name>CodigoSesion</con:name>
         <con:sourceType>Response</con:sourceType>
         <con:sourceStep>REST Iniciar_Sesion</con:sourceStep>
@@ -74,12 +74,13 @@
         <con:parameters>
           <con:entry key="CodigoTipoConvenio" value="1"/>
           <con:entry key="IP" value="10.0.0.0"/>
-          <con:entry key="CodigoSesion" value="70331955"/>
+          <con:entry key="CodigoSesion" value="30764375"/>
           <con:entry key="ImprimirCSV" value="false"/>
         </con:parameters>
       </con:restRequest>
     </con:config>
   </con:testStep>
+  <con:tearDownScript/>
   <con:properties/>
   <con:reportParameters/>
   <con:breakPoints>

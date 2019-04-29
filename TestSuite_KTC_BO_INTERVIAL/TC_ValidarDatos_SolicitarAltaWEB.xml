@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="5a1ce6e5-bc4a-4108-ba06-37ab88803ebb" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_ValidarDatos_SolicitarAltaWEB" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="5a1ce6e5-bc4a-4108-ba06-37ab88803ebbfileName">TC_ValidarDatos_SolicitarAltaWEB</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="REST Iniciar_Sesion" id="63e51c0b-50b5-4c17-96df-4bfd4a199573">
+    <con:settings/>
+    <con:config service="Kapsch TrafficCom Chile - ASP.Net Web API (Rest) - Intervial" methodName="ValidarDatos_IniciarSesion" resourcePath="/api/ValidarDatos/IniciarSesion" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="REST Iniciar_Sesion" id="73ef40ff-224e-4fde-b36e-6386978d6655" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://148.198.229.21:8096</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://148.198.229.21/api/ValidarDatos/IniciarSesion</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <con:entry key="Rut" value="12449429K"/>
+          <con:entry key="Clave" value="A012345678"/>
+          <con:entry key="IP" value="10.0.0.0"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="REST Obtener_Convenio" id="9d17d01b-9afd-4a2d-b022-564a7fcc7ccc">
+    <con:settings/>
+    <con:config service="Kapsch TrafficCom Chile - ASP.Net Web API (Rest) - Intervial" methodName="Convenios_ObtenerConvenios" resourcePath="/api/Convenios/ObtenerConvenios" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="REST Obtener_Convenio" id="c5aedcf5-9212-4be2-8ff1-b8041ebea301" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://148.198.229.21:8096</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://148.198.229.21/api/Convenios/ObtenerConvenios</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <con:entry key="CodigoTipoConvenio" value="1"/>
+          <con:entry key="IP" value="10.0.0.0"/>
+          <con:entry key="CodigoSesion" value="30764375"/>
+          <con:entry key="ImprimirCSV" value="false"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="REST Captcha" id="d11c0ac0-9fd3-459f-86c6-53a71b98d195">
+    <con:settings/>
+    <con:config service="Kapsch TrafficCom Chile - ASP.Net Web API (Rest) - Intervial" methodName="Generales_ObtenerCaptcha" resourcePath="/api/Generales/ObtenerCaptcha" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="REST Captcha" id="f3e2ebc0-47af-4c23-ab6c-1a6aa1a0224a" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://148.198.229.21:8096</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://148.198.229.21/api/Generales/ObtenerCaptcha</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <entry key="IP" value="10.0.0.0" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="PropertyTransfer 1" id="4b55b1c6-6cba-4eae-9f79-795774102c2c">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>Objeto</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>REST Captcha</con:sourceStep>
+        <con:sourcePath>$['Objeto']</con:sourcePath>
+        <con:targetType>Captcha</con:targetType>
+        <con:targetStep>REST SolicitarAltaWEB</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true">
+        <con:name>CodigoSesion</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>REST Iniciar_Sesion</con:sourceStep>
+        <con:sourcePath>$['Objeto']['CodigoSesion']</con:sourcePath>
+        <con:targetType>CodigoSesion</con:targetType>
+        <con:targetStep>REST Obtener_Convenio</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true">
+        <con:name>CodigoConvenio</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>REST Obtener_Convenio</con:sourceStep>
+        <con:sourcePath>$['Objeto'][0]['CodigoConvenio']</con:sourcePath>
+        <con:targetType>CodigoConvenio</con:targetType>
+        <con:targetStep>REST ObtenerCuentas</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="REST Obtener_Medio_Contacto" id="d9502590-d030-46de-924c-fa5f8d400025">
+    <con:settings/>
+    <con:config service="Kapsch TrafficCom Chile - ASP.Net Web API (Rest) - Intervial" methodName="ValidarDatos_ObtenerMediosContacto" resourcePath="/api/ValidarDatos/ObtenerMediosContacto" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="REST Obtener_Medio_Contacto" id="6cf0750a-b7e2-4e47-a61e-e3d54f7aa3ca" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://148.198.229.21:8096</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://148.198.229.21/api/ValidarDatos/ObtenerMediosContacto</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <con:entry key="IP" value="10.0.0.0"/>
+          <con:entry key="CodigoSesion" value="68123466"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="PropertyTransfer 2" id="a8a8a393-0413-47e4-b180-46bd3b3c037f">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true">
+        <con:name>Email</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>REST Obtener_Medio_Contacto</con:sourceStep>
+        <con:sourcePath>$['Objeto']['Email']</con:sourcePath>
+        <con:targetType>Email</con:targetType>
+        <con:targetStep>REST SolicitarAltaWEB</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true">
+        <con:name>TelefonoPrincipal</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>REST Obtener_Medio_Contacto</con:sourceStep>
+        <con:sourcePath>$['Objeto']['TelefonoPrincipal']</con:sourcePath>
+        <con:targetType>TelefonoCelular</con:targetType>
+        <con:targetStep>REST SolicitarAltaWEB</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="REST ObtenerCuentas" id="ced6bbf3-fd6a-4636-a4b1-33c4bbc05740">
+    <con:settings/>
+    <con:config service="Kapsch TrafficCom Chile - ASP.Net Web API (Rest) - Intervial" methodName="Convenios_ObtenerCuentas" resourcePath="/api/Convenios/ObtenerCuentas" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="REST ObtenerCuentas" id="7ced44d7-925a-4f46-9cab-80674a5b7796" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://148.198.229.21:8096</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://148.198.229.21/api/Convenios/ObtenerCuentas</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <con:entry key="CodigoConvenio" value="2959296"/>
+          <con:entry key="IP" value="10.0.0.0"/>
+          <con:entry key="CodigoSesion" value="${REST Obtener_Medio_Contacto#CodigoSesion}"/>
+          <con:entry key="ImprimirCSV" value="false"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="PropertyTransfer 3" id="1f141201-89b2-46a4-a4ff-741cd52aca95">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true">
+        <con:name>Patente</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>REST ObtenerCuentas</con:sourceStep>
+        <con:sourcePath>$['Objeto'][0]['Patente']</con:sourcePath>
+        <con:targetType>Patente</con:targetType>
+        <con:targetStep>REST SolicitarAltaWEB</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="REST SolicitarAltaWEB" id="68d3c7e6-61b3-4caf-9d7e-6544c267c9e7">
+    <con:settings/>
+    <con:config service="Kapsch TrafficCom Chile - ASP.Net Web API (Rest) - Intervial" methodName="ValidarDatos_SolicitarAltaWEB" resourcePath="/api/ValidarDatos/SolicitarAltaWEB" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="REST SolicitarAltaWEB" id="743dd198-9b56-497b-9393-afcbaa81fc13" mediaType="application/x-www-form-urlencoded" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://148.198.229.21:8096</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://148.198.229.21/api/ValidarDatos/SolicitarAltaWEB</con:originalUri>
+        <con:assertion type="JsonPath Match" id="604e697f-f8f9-49c5-acf6-f473dc5e2582" name="Match content of [Codigo]">
+          <con:configuration>
+            <path>$['DescripcionServicio']['Codigo']</path>
+            <content>10020</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <con:entry key="Captcha" value="tntq"/>
+          <con:entry key="ConfirmacionClave" value="automatizado"/>
+          <con:entry key="Clave" value="automatizado"/>
+          <con:entry key="DVPatente" value="0"/>
+          <con:entry key="IP" value="10.0.0.0"/>
+          <con:entry key="NumeroDocumento" value="${REST Iniciar_Sesion#Rut}"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>d11c0ac0-9fd3-459f-86c6-53a71b98d195</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>63e51c0b-50b5-4c17-96df-4bfd4a199573</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>d9502590-d030-46de-924c-fa5f8d400025</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>9d17d01b-9afd-4a2d-b022-564a7fcc7ccc</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>ced6bbf3-fd6a-4636-a4b1-33c4bbc05740</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

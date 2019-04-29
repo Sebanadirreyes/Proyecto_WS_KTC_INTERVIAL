@@ -82,7 +82,7 @@
           <con:entry key="TipoMedioContactoPrincipal" value="2"/>
           <con:entry key="TipoMedioContactoOtro" value="3"/>
           <con:entry key="TelefonoPrincipal" value="2222222"/>
-          <con:entry key="CodigoSesion" value="63634805"/>
+          <con:entry key="CodigoSesion" value="45582401"/>
         </con:parameters>
       </con:restRequest>
     </con:config>
